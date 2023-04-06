@@ -8,7 +8,7 @@ This is a technology test that uses APIs from OpenAI, ElevenLabs, and Google to 
 It includes three "scenarios":
 
  * Japanese teacher - Atsuko sensei can teach any level Japanese.  She can create quizes or roleplay situations, like working at a store or whatever.
- * Seth - It's me!  You can talk to me.  Do not trust anything I say.  Unfortuantely I can't share the custom voice I trained using ElevenLabs, so it's using a default one.
+ * Seth - It's me!  You can talk to me.  Do not trust anything I say.  Unfortunately I can't share the custom voice I trained using ElevenLabs, so it's using a default one.
  * Big Burger - Order your food from the rudest fast food employee in the universe
 
 New to AI with Unity?  Check the Assets/RT/AI directory, you'll see some simple ways to make API calls, that's what this app is using.  The 3D visuals are just for fun.
@@ -50,6 +50,7 @@ To fix the errors, you'll need to buy [SALSA LipSync Suite](https://assetstore.u
 
 Alternatively, you can ditch the lip syncing tech by editing Assets/_Script/AIManager.cs and commenting out #define CRAZY_MINNOW_PRESENT 
 
+Note that when running from the Unity editor, it does more debug stuff, it writes out every .json it sends/receives for debugging purposes.
 ---
 
 Credits and links
