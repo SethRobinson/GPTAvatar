@@ -1,0 +1,24 @@
+{
+  "name": "com.soupday.cc3_unity_tools",
+  "version": "1.4.7",
+  "displayName": "CC/iC Unity Tools URP",
+  "description": "Unity importer for Character Creator 3 & 4 and iClone 7 and 8.",
+  "unity": "2021.2",
+  "documentationUrl": "https://soupday.github.io/cc_unity_tools/index.html",
+  "changelogUrl": "https://github.com/soupday/CHANGELOG.md",
+  "licensesUrl": "https://github.com/soupday/cc_unity_tools/blob/stable/LICENSE",
+  "keywords": [
+    "Reallusion",
+    "Character Creator",
+    "iClone"
+  ],
+  "author": {
+    "name": "Victor Soupday",
+    "email": "user@noreply.com",
+    "url": "https://github.com/soupday"
+  },
+  "type": "tool",
+  "dependencies": {
+    "com.unity.render-pipelines.universal": "12.0.0"
+  }
+}

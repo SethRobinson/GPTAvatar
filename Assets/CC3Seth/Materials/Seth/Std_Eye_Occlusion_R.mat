@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Std_Eye_Occlusion_R
+  m_Shader: {fileID: -6465566751694194690, guid: e11e1541751f73a4bbdc03b071617a93,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ENABLE_FOG_ON_TRANSPARENT
+  - _SURFACE_TYPE_TRANSPARENT
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3003
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - TransparentDepthPrepass
+  - TransparentDepthPostpass
+  - TransparentBackface
+  - RayTracingPrepass
+  - MOTIONVECTORS
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BottomCurve: 2
+    - _BottomMax: 0.525
+    - _BottomMin: 0.05
+    - _ExpandInner: 0.0001
+    - _ExpandLower: 0
+    - _ExpandOut: 0.0002
+    - _ExpandOuter: 0.00035
+    - _ExpandScale: 1
+    - _ExpandUpper: 0
+    - _InnerMax: 0.84000003
+    - _InnerMin: 0.2
+    - _OcclusionPower: 2
+    - _OcclusionStrength: 0.66943294
+    - _OcclusionStrength2: 0.7937005
+    - _OuterMax: 0.83
+    - _OuterMin: 0.15
+    - _QueueControl: 1
+    - _QueueOffset: 0
+    - _TearDuctPosition: 0.8
+    - _TearDuctWidth: 0.5
+    - _Top2Max: 1
+    - _Top2Min: 0.2
+    - _TopCurve: 0.82
+    - _TopMax: 1
+    - _TopMin: 0.25
+    m_Colors:
+    - _OcclusionColor: {r: 0.045420855, g: 0.0068510403, b: 0.0028026958, a: 1}
+  m_BuildTextureStacks: []
+--- !u!114 &7973328172543882805
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7

@@ -1,0 +1,71 @@
+
+# GPTAvatar: 3D AI Virtual Chatbot made in Unity
+
+License:  BSD style attribution, see [LICENSE.md](LICENSE.md)
+
+This is a technology test that uses APIs from OpenAI, ElevenLabs, and Google to allow a 3D AI character to converse with using a microphone.
+
+It includes three "scenarios":
+
+ * Japanese teacher - Atsuko sensei can teach any level Japanese.  She can create quizes or roleplay situations, like working at a store or whatever.
+ * Seth - It's me!  You can talk to me.  Do not trust anything I say.  Unfortuantely I can't share the custom voice I trained using ElevenLabs, so it's using a default one.
+ * Big Burger - Order your food from the rudest fast food employee in the universe
+
+New to AI with Unity?  Check the Assets/RT/AI directory, you'll see some simple ways to make API calls, that's what this app is using.  The 3D visuals are just for fun.
+
+BTW, it is possible to build this on iOS, although I recently broke that when I added the config.txt editing stuff, but it can be done.
+
+Note:  The "copy" button puts the dialog into the system clipboard, useful to get at the kanji if you're doing Japanese practice.
+
+<a href="https://www.youtube.com/watch?v=2sriENjy-x8"><img align="top" src="Misc/teacher_thumb.png" width=300></a>
+<a href="https://www.youtube.com/watch?v=J3aGM1yA6O4"><img align="top" src="Misc/seth_thumb.png" width=300></a>
+
+
+
+# Running it
+
+ * Download [GPTAvatar (Windows, 300 MB)](https://www.rtsoft.com/files/GPTAvatar_Windows.zip) and unzip it somewhere
+ * Rename config_template.txt to config.txt
+ * Edit config.txt with a text editor, at a minimum you need to add your OpenAI API key.  Other API keys are required for "speaking", if you leave them blank the character won't actually talk.
+ 
+ That's it.  If you have any problems, check the directory for files like tts_last_error_returned.json or similar, you can edit them with a text editor to see what's going on.
+
+ To change the personality or add more characters, edit the config.txt, you'll see how.
+
+ WARNING: These APIs cost real money to use, so watch out.  The ElevenLabs voices are probably the most pricey thing of all (but damn they sound real!), so consider switching to using Google's TTS instead to save money, just edit the config.txt for that character. The "teacher" is already set to use Google as Elevenlabs can't do Japanese.
+
+
+
+# Building from this github source
+
+* Requires Unity 2022.2+
+* Open the scene "Main" and click play to run, it will give errors
+
+To fix the errors, you'll need to buy [SALSA LipSync Suite](https://assetstore.unity.com/packages/tools/animation/salsa-lipsync-suite-148442) from the Unity asset store
+
+* After installing the main plugin, also install the oneclickbase 2_5_0_2 package and oneclickcc 2_6_2 package, these are available from https://crazyminnowstudio.com/docs/salsa-lip-sync/addons/one-clicks/
+ * In the file Assets/_Script/AIManager.cs make sure that #define CRAZY_MINNOW_PRESENT is uncommented
+ * In the Unity editor, select the root 3d node that has the Animator object (Visuals/char_visual_seth/Seth) for example and then from the menu bar choose GameObject->Crazy Minnow Studio->Salsa LipSync->Oneclicks->Reallusion->CC4.  The Salsa objects on that entity should be enabled now and work in the game.  (The Salsa objects should turn blue) You'll have to do it to the teacher model too.
+* If you want the model's eyes to look at the camera, you have to set the eye target to the camera. (only works right with the teacher)
+
+Alternatively, you can ditch the lip syncing tech by editing Assets/_Script/AIManager.cs and commenting out #define CRAZY_MINNOW_PRESENT 
+
+---
+
+Credits and links
+
+- Written by Seth A. Robinson (seth@rtsoft.com) twitter: @rtsoft - [Codedojo](https://www.codedojo.com), Seth's blog
+
+Note:  The license only applies to my source code, for sound/graphics, uh, it might be complicated so don't count on being able to use any of that in a real product.
+
+Engine: Unity
+
+Listening: Whisper (via OpenAI's API)
+
+Thinking: ChatGTP (via OpenAI's API)
+
+Talking: ElevenLabs' Voicelab (trained on my voice)
+
+3D Model: Reallusion's Headshot (model faces created using my picture and AI)
+
+Lipsync: SALSA Lipsync Suite
