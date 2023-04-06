@@ -25,3 +25,5 @@ config.txt
 GPTAvatar_Windows.zip
 GPTAvatar.sln
 .vsconfig
+soupday.cc3_unity_tools.editor.csproj
+soupday.cc3_unity_tools.runtime.csproj

@@ -16,7 +16,7 @@ set_elevenlabs_api_key|<your elevenlabs api key here>
 #Full list of elevenlabs voices: https://beta.elevenlabs.io/speech-synthesis  ( or really, https://api.elevenlabs.io/v1/voices )
 
 #set openAI model to use for AI.  Should be either gpt-3.5-turbo or gpt-4, if you have access to that
-set_openai_model|gpt-4
+set_openai_model|gpt-3.5-turbo
 
 
 add_friend|Japanese Teacher

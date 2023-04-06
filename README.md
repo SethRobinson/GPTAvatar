@@ -34,6 +34,11 @@ Note:  The "copy" button puts the dialog into the system clipboard, useful to ge
 
  WARNING: These APIs cost real money to use, so watch out.  The ElevenLabs voices are probably the most pricey thing of all (but damn they sound real!), so consider switching to using Google's TTS instead to save money, just edit the config.txt for that character. The "teacher" is already set to use Google as Elevenlabs can't do Japanese.
 
+ ## GPT-3 vs GPT-4
+
+ I've set the default in the config.txt to "gpt-3.5-turbo", but you should change this to "gpt-4" if you have access to that.  (At this time its API is not available to all)  Nearly all my testing and settings are for gpt-4 so uh.. if using gpt-3, while it works, it probably needs some tweaks as it's expecting 8k of token space which it doesn't have in that case.  
+ 
+ The gpt-4 API will probably be avaiable to all soon though.
 
 
 # Building from this github source
