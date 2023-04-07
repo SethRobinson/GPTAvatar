@@ -13,13 +13,12 @@ It includes three "scenarios":
 
 New to AI with Unity?  Check the Assets/RT/AI directory, you'll see some simple ways to make API calls, that's what this app is using.  The 3D visuals are just for fun.
 
-BTW, it is possible to build this on iOS, although I recently broke that when I added the config.txt editing stuff, but it can be done.
+BTW, it is possible to build this on Windows, Mac, and iOS.  The iOS build would need to be tweaked to load the config.txt a different way though.
 
 Note:  The "copy" button puts the dialog into the system clipboard, useful to get at the kanji if you're doing Japanese practice.
 
 <a href="https://www.youtube.com/watch?v=2sriENjy-x8"><img align="top" src="Misc/teacher_thumb.png" width=300></a>
 <a href="https://www.youtube.com/watch?v=J3aGM1yA6O4"><img align="top" src="Misc/seth_thumb.png" width=300></a>
-
 
 
 # Running it
@@ -33,6 +32,8 @@ Note:  The "copy" button puts the dialog into the system clipboard, useful to ge
  To change the personality or add more characters, edit the config.txt, you'll see how.
 
  WARNING: These APIs cost real money to use, so watch out.  The ElevenLabs voices are probably the most pricey thing of all (but damn they sound real!), so consider switching to using Google's TTS instead to save money, just edit the config.txt for that character. The "teacher" is already set to use Google as Elevenlabs can't do Japanese.
+
+ API keys are simple to get and use (sign up, put in credit card, get API key) except for Google, it's a little more convoluted, might want to google "How to get a TTS API key from Google".  The Google key is only used for the voice of the Japanese teacher currently.
 
  ## GPT-3 vs GPT-4
 
