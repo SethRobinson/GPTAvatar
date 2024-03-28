@@ -3,6 +3,8 @@
 
 License:  BSD style attribution, see [LICENSE.md](LICENSE.md)
 
+Interested in Education and AI?  Check out this paper I collaborated on: Fink, M. C., Robinson, S. A., & Ertl, B. (2024, March 27). AI-Based Avatars Are Changing the Way We Learn and Teach: Benefits and Challenges. https://doi.org/10.35542/osf.io/jt83m
+
 This is a technology test that uses APIs from OpenAI, ElevenLabs, and Google to allow a 3D AI character to converse with using a microphone.
 
 It includes three "scenarios":
@@ -13,7 +15,7 @@ It includes three "scenarios":
 
 New to AI with Unity?  Check the Assets/RT/AI directory, you'll see some simple ways to make API calls, that's what this app is using.  The 3D visuals are just for fun.
 
-BTW, it is possible to build this on Windows, Mac, and iOS.  The iOS build would need to be tweaked to load the config.txt a different way though.
+BTW, it is possible to build this on Windows, Mac, and iOS.  The iOS build would need to be tweaked to load the config.txt a different way.  (I originally had it running on iOS but wanted to move the config.txt to a separate file for easier editing and haven't tried it since)
 
 Note:  The "copy" button puts the dialog into the system clipboard, useful to get at the kanji if you're doing Japanese practice.
 
