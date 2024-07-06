@@ -67,6 +67,7 @@ Credits and links
 
 Note:  The license only applies to my source code, for sound/graphics, uh, it might be complicated so don't count on being able to use any of that in a real product.
 
+
 Engine: Unity
 
 Listening: Whisper (via OpenAI's API)
@@ -78,3 +79,7 @@ Talking: ElevenLabs' Voicelab (trained on my voice)
 3D Model: Reallusion's Headshot (model faces created using my picture and AI)
 
 Lipsync: SALSA Lipsync Suite
+
+# Additional versions/forks
+
+[GPTAvatarWebGL](https://github.com/MCF3389/GPTAvatarWebGL) - A version that can run on the web by Maximilian C. Fink 
