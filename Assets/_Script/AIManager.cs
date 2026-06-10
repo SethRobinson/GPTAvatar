@@ -22,6 +22,7 @@ public class AIManager : MonoBehaviour
     string _openAI_APIModel;
     string _googleAPIkey;
     string _elevenLabsAPIkey;
+    string _sixtyDbAPIkey;
     public GameObject _visuals;
     AudioSource _audioSourceToUse = null;
     Vector2 vTextOverlayPos = new Vector2(Screen.width * 0.58f, (float)Screen.height - ((float)Screen.height * 0.4f));
@@ -126,6 +127,11 @@ public class AIManager : MonoBehaviour
     public void SetElevenLabsAPIKey(string key)
     {
         _elevenLabsAPIkey = key;
+    }
+
+    public void SetSixtyDbAPIKey(string key)
+    {
+        _sixtyDbAPIkey = key;
     }
 
     public string GetAdvicePrompt()
@@ -293,10 +299,27 @@ public class AIManager : MonoBehaviour
         string json;
         int sampleRate = 22050;
 
-        if (_activeFriend._elevelLabsVoice.Length > 1 && _elevenLabsAPIkey.Length > 1)
+        //Figure out which TTS provider to use.  An explicit per-friend "set_friend_voice_provider"
+        //wins; if it's blank we fall back to the old auto-detect (ElevenLabs, then Google).
+        string provider = _activeFriend._voiceProvider;
+        if (provider.Length < 1)
         {
-            //get the country code directly from the voice name. This should always work, I hope
-            string countryCode = _activeFriend._elevelLabsVoice.Substring(0, 5);
+            if (_activeFriend._elevelLabsVoice.Length > 1 && _elevenLabsAPIkey.Length > 1)
+                provider = "elevenlabs";
+            else if (_activeFriend._googleVoice.Length > 1 && _googleAPIkey.Length > 1)
+                provider = "google";
+        }
+
+        if (provider == "60db" && _activeFriend._sixtyDbVoice.Length > 1 && _sixtyDbAPIkey.Length > 1)
+        {
+            SixtyDbTextToSpeechManager ttsScript = gameObject.GetComponent<SixtyDbTextToSpeechManager>();
+            json = ttsScript.BuildTTSJSON(text, _activeFriend._sixtyDbVoice, _activeFriend._sixtyDbStability, _activeFriend._sixtyDbSimilarity, _activeFriend._speed);
+            ttsScript.SpawnTTSRequest(json, OnTTSCompletedCallback, db, _sixtyDbAPIkey);
+
+            UpdateStatusText("Clearing throat...", 20);
+        }
+        else if (provider == "elevenlabs" && _activeFriend._elevelLabsVoice.Length > 1 && _elevenLabsAPIkey.Length > 1)
+        {
             ElevenLabsTextToSpeechManager ttsScript = gameObject.GetComponent<ElevenLabsTextToSpeechManager>();
             json = ttsScript.BuildTTSJSON(text, _activeFriend._elevenlabsStability);
             ttsScript.SpawnTTSRequest(json, OnTTSCompletedCallbackElevenLabs, db, _elevenLabsAPIkey, _activeFriend._elevelLabsVoice);
@@ -304,7 +327,7 @@ public class AIManager : MonoBehaviour
             UpdateStatusText("Clearing throat...", 20);
 
         }
-        else if (_activeFriend._googleVoice.Length > 1 && _googleAPIkey.Length > 1)
+        else if (provider == "google" && _activeFriend._googleVoice.Length > 1 && _googleAPIkey.Length > 1)
         {
             //get the country code directly from the voice name. This should always work, I hope
             string countryCode = _activeFriend._googleVoice.Substring(0, 5);
