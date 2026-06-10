@@ -12,8 +12,19 @@ set_google_api_key|<your google api key here>
 #optional, allows elevenlabs voices to work.  Set to blank for no voice
 set_elevenlabs_api_key|<your elevenlabs api key here>
 
+#optional, allows 60db.ai voices to work.  Set to blank for no voice
+set_60db_api_key|<your 60db api key here>
+
 #Full list of Google's text to speech voices: https://cloud.google.com/text-to-speech/docs/voices
 #Full list of elevenlabs voices: https://beta.elevenlabs.io/speech-synthesis  ( or really, https://api.elevenlabs.io/v1/voices )
+#Full list of your 60db voices: https://api.60db.ai/myvoices  (docs: https://docs.60db.ai )
+
+#Each friend can pick a voice provider explicitly with set_friend_voice_provider (elevenlabs, google, or 60db).
+#If you leave it out, it auto-picks: elevenlabs if a voice+key are set, otherwise google.
+#For 60db, set the voice (a UUID) with set_friend_60db_voice, and optionally:
+#   set_friend_60db_stability   (0-100, lower = more expressive, default 50)
+#   set_friend_60db_similarity  (0-100, voice match fidelity, default 75)
+#   set_friend_voice_speed      (0.5-2.0, shared with the other providers)
 
 #set openAI model to use for AI.  Should be either gpt-3.5-turbo or gpt-4, if you have access to that
 set_openai_model|gpt-3.5-turbo
@@ -57,6 +68,10 @@ set_friend_max_tokens_to_generate|100
 #accounts...
 set_friend_elevenlabs_voice|pNInz6obpgDQGcFmaJgB
 set_friend_elevenlabs_stability|0.1
+#To use 60db.ai for this character instead, uncomment the next three lines (and set a real voice UUID):
+#set_friend_voice_provider|60db
+#set_friend_60db_voice|<your 60db voice uuid here>
+#set_friend_60db_stability|40
 set_friend_voice_pitch|0
 set_friend_voice_speed|1
 set_friend_visual|seth

@@ -5,7 +5,7 @@ License:  BSD style attribution, see [LICENSE.md](LICENSE.md)
 
 Interested in Education and AI?  Check out this paper I collaborated on: Fink, M. C., Robinson, S. A., & Ertl, B. (2024, March 27). AI-Based Avatars Are Changing the Way We Learn and Teach: Benefits and Challenges. https://doi.org/10.35542/osf.io/jt83m
 
-This is a technology test that uses APIs from OpenAI, ElevenLabs, and Google to allow a 3D AI character to converse with using a microphone.
+This is a technology test that uses APIs from OpenAI, ElevenLabs, 60db.ai, and Google to allow a 3D AI character to converse with using a microphone.
 
 It includes three "scenarios":
 
@@ -37,6 +37,16 @@ Note:  The "copy" button puts the dialog into the system clipboard, useful to ge
 
  API keys are simple to get and use (sign up, put in credit card, get API key) except for Google, it's a little more convoluted, might want to google "How to get a TTS API key from Google".  The Google key is only used for the voice of the Japanese teacher currently.
 
+ ## Text-to-speech providers (voices)
+
+ Each character ("friend") can speak using one of three TTS providers: ElevenLabs, 60db.ai, or Google.  Set the provider per character in config.txt with `set_friend_voice_provider` (`elevenlabs`, `60db`, or `google`).  If you leave that line out it auto-picks the old way: ElevenLabs if a voice and key are set, otherwise Google.
+
+ * ElevenLabs - set `set_elevenlabs_api_key`, then per character `set_friend_elevenlabs_voice` and optionally `set_friend_elevenlabs_stability` (0-1).  Voices: https://api.elevenlabs.io/v1/voices
+ * 60db.ai - set `set_60db_api_key`, then per character `set_friend_60db_voice` (a voice UUID) and optionally `set_friend_60db_stability` / `set_friend_60db_similarity` (both 0-100).  Your voices: https://api.60db.ai/myvoices  (docs: https://docs.60db.ai)
+ * Google - set `set_google_api_key`, then per character `set_friend_google_voice`.  Voices: https://cloud.google.com/text-to-speech/docs/voices
+
+ If you leave a provider's key blank, that provider just won't talk.  Listening is always handled by OpenAI's Whisper regardless of which voice provider you pick.
+
  ## GPT-3 vs GPT-4
 
  I've set the default in the config.txt to "gpt-3.5-turbo", but you should change this to "gpt-4" if you have access to that.  (At this time its API is not available to all)  Nearly all my testing and settings are for gpt-4 so uh.. if using gpt-3, while it works, it probably needs some tweaks as it's expecting 8k of token space which it doesn't have in that case.  
@@ -57,6 +67,8 @@ To fix the errors, you'll need to buy [SALSA LipSync Suite](https://assetstore.u
 * If you want the model's eyes to look at the camera, you have to set the eye target to the camera. (only works right with the teacher)
 
 Alternatively, you can ditch the lip syncing tech by editing Assets/_Script/AIManager.cs and commenting out #define CRAZY_MINNOW_PRESENT 
+
+The TTS provider scripts (ElevenLabsTextToSpeechManager, GoogleTextToSpeechManager, SixtyDbTextToSpeechManager) live in Assets/RT/AI and are attached as components to the same GameObject that has AIManager.  If you add a provider, make sure its script is attached there or the GetComponent call will return null at runtime.
 
 Note that when running from the Unity editor, it does more debug stuff, it writes out every .json it sends/receives for debugging purposes.
 ---

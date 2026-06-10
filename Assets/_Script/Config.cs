@@ -14,12 +14,16 @@ public class Friend : ScriptableObject
     public int _friendTokenMemory = 200;
     public string _googleVoice = "";
     public string _elevelLabsVoice = "";
+    public string _sixtyDbVoice = "";
+    public string _voiceProvider = ""; //"elevenlabs", "google", or "60db".  Blank = auto-detect (legacy behavior)
     public float _pitch = 0.0f;
     public float _speed = 1.0f;
     public string _visual = "";
     public int _maxTokensToGenerate = 50;
     public float _temperature = 1.3f;
     public float _elevenlabsStability = 0.7f;
+    public float _sixtyDbStability = 50.0f;  //60db uses a 0-100 scale (opposite of ElevenLabs' 0-1)
+    public float _sixtyDbSimilarity = 75.0f; //60db uses a 0-100 scale
 }
 
 public class Config : MonoBehaviour
@@ -145,6 +149,11 @@ public class Config : MonoBehaviour
                     _aiManagerScript.SetElevenLabsAPIKey(words[1]);
                 }
                 else
+                if (words[0] == "set_60db_api_key")
+                {
+                    _aiManagerScript.SetSixtyDbAPIKey(words[1]);
+                }
+                else
                 if (words[0] == "add_friend")
                 {
                     //need to use scriptable object
@@ -247,6 +256,16 @@ public class Config : MonoBehaviour
                     friend._elevelLabsVoice = words[1];
                 }
                 else
+                if (words[0] == "set_friend_60db_voice")
+                {
+                    friend._sixtyDbVoice = words[1];
+                }
+                else
+                if (words[0] == "set_friend_voice_provider")
+                {
+                    friend._voiceProvider = words[1].ToLower();
+                }
+                else
                 if (words[0] == "set_friend_visual")
                 {
                     //convert to int with TryParse
@@ -263,6 +282,16 @@ public class Config : MonoBehaviour
                 {
                     //convert to int with TryParse
                     float.TryParse(words[1], out friend._elevenlabsStability);
+                }
+                else
+                if (words[0] == "set_friend_60db_stability")
+                {
+                    float.TryParse(words[1], out friend._sixtyDbStability);
+                }
+                else
+                if (words[0] == "set_friend_60db_similarity")
+                {
+                    float.TryParse(words[1], out friend._sixtyDbSimilarity);
                 }
 
 
